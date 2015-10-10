@@ -10,6 +10,10 @@ namespace cis237assignment3
     {
         static void Main(string[] args)
         {
+            Console.Write("It Still Runs!!!!!!!!!!!");
+            Console.ReadKey();
         }
+
+       
     }
 }

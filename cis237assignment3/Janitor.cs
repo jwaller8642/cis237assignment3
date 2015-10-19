@@ -11,8 +11,7 @@ namespace cis237assignment3
         bool trashCompactor;
         bool vacuum;
 
-        public Janitor(string Material, string Model, string Color, bool ToolBox, bool ComputerConnection, 
-            bool Arm, bool TrashCompactor, bool Vacuum) : 
+        public Janitor(string Material, string Model, string Color, bool ToolBox, bool ComputerConnection, bool Arm, bool TrashCompactor, bool Vacuum) : 
             base(Material,Model,Color,ToolBox,ComputerConnection,Arm)
         {
             this.trashCompactor = TrashCompactor;

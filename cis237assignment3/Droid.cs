@@ -57,7 +57,7 @@ namespace cis237assignment3
         //   return this.Material + " " + this.Color + " " + this.Model;
        //}
 
-      
+      //Absteact methods
        public abstract double CalculateBaseCost();
        public abstract void CalculateTotalCost();
        public abstract decimal TotalCost { get; set; }

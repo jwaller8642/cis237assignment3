@@ -9,10 +9,19 @@ namespace cis237assignment3
 {
     class Program
     {
-
+        /// <summary>
+        ///           ***********Problems***********
+        /// Dosen't save to file or print from file correctly
+        /// Not sure if im useing calculate methods from othe classes right
+        /// No UI, Will work before next assgnment
+        /// Not a lot or very detail comment(have to get used to commenting while i code)
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
 
         static void Main(string[] args)
         {
+            //Variables
             string materialSelected = string.Empty;
             string modelSelected;
             string colorSelected;
@@ -24,8 +33,9 @@ namespace cis237assignment3
             bool fireExtingSelected;
             int numOfChips;
             int numberOfLanguage;
-            string userInput = string.Empty;
+            string userInput = string.Empty;     
             DroidCollection newDroid = new DroidCollection();
+            
             // Console.Write("It Still Runs!!!!!!!!!!!");
 
 
@@ -40,6 +50,7 @@ namespace cis237assignment3
 
                 if (userInput == "n")
                 {
+                    // All droid Units go throuh this procees
                     Console.WriteLine("--------------------");
 
                     Console.Write("Material: ");
@@ -53,64 +64,83 @@ namespace cis237assignment3
                     Console.WriteLine("selcet a Droid");
                     userInput = Console.ReadLine();
                     //if protocol is selceted
-                    if (userInput == "protocol")
+                    if (userInput.Equals("protocol", StringComparison.OrdinalIgnoreCase ))
                     {
                         Console.Write("Number of Language: ");
                         numberOfLanguage = Int32.Parse(Console.ReadLine());
-                        newDroid.addProtocolDroid(materialSelected, modelSelected, colorSelected, numberOfLanguage);
-                        newDroid.saveDroidList();
-                        Console.WriteLine("================");
+                        newDroid.addProtocolDroid(materialSelected, modelSelected, colorSelected, numberOfLanguage);// adds user input
+                        newDroid.saveDroidList();// saves user input
+                        Console.WriteLine("------------------");
 
                     }
-                    else if (userInput == "utility")
+                        // if utility is selected
+                    else if (userInput.Equals("utility", StringComparison.OrdinalIgnoreCase ))
                     {
-                        Console.WriteLine("Tool box yes or no");
+                        Console.Write("Tool box yes or no ");
                         toolboxSelected = ToBool(Console.ReadLine());
-                        Console.WriteLine("Computer Connection yes or no");
+                        Console.Write("Computer Connection yes or no ");
                         computerConnectionSelected = ToBool(Console.ReadLine());
-                        Console.WriteLine("Arm yes or no");
+                        Console.Write("Arm yes or no ");
                         armSelected = ToBool(Console.ReadLine());
-                        newDroid.addUtilityDroid(materialSelected, modelSelected, colorSelected, toolboxSelected, computerConnectionSelected,armSelected);
-                        newDroid.saveDroidList();
+                        newDroid.addUtilityDroid(materialSelected, modelSelected, colorSelected, toolboxSelected, computerConnectionSelected, armSelected);// adds user input
+                        newDroid.saveDroidList();// saves user input
                         
                     }
-                    else if(userInput == "janitor")
+                        // if janitor is selected
+                    else if(userInput.Equals("janitor", StringComparison.OrdinalIgnoreCase ))
                     {
-                        Console.WriteLine("Tool box yes or no");
+                        Console.Write("Tool box yes or no ");
                         toolboxSelected = ToBool(Console.ReadLine());
-                        Console.WriteLine("Computer Connection yes or no");
+                        Console.Write("Computer Connection yes or no ");
                         computerConnectionSelected = ToBool(Console.ReadLine());
-                        Console.WriteLine("Arm yes or no");
+                        Console.Write("Arm yes or no ");
                         armSelected = ToBool(Console.ReadLine());
-                        Console.WriteLine("Trash Compactoer yes or no");
+                        Console.Write("Trash Compactoer yes or no ");
                         trashCompatSelected = ToBool(Console.ReadLine());
-                        Console.WriteLine("Vacuum yes or no");
+                        Console.Write("Vacuum yes or no ");
                         vacuumSelected = ToBool(Console.ReadLine());
-                        newDroid.addJanitorDroid(materialSelected, modelSelected, colorSelected, toolboxSelected, computerConnectionSelected, armSelected, trashCompatSelected,vacuumSelected);
-                        newDroid.saveDroidList();
+                        newDroid.addJanitorDroid(materialSelected, modelSelected, colorSelected, toolboxSelected, computerConnectionSelected, armSelected, trashCompatSelected, vacuumSelected);// adds user input
+                        newDroid.saveDroidList();// saves user input
+                        Janitor janitorCost = new Janitor(materialSelected, modelSelected, colorSelected, toolboxSelected, computerConnectionSelected, armSelected, trashCompatSelected, vacuumSelected);//creates new Janitor object so we can you the methods eith n that class
+                        janitorCost.CalculateBaseCost();// Calculate methods from astromech
+                        janitorCost.CalculateTotalCost();
                     }
+                        //If astromec is selected
                     else if (userInput.Equals("astromech" , StringComparison.OrdinalIgnoreCase ))
                     {
-                        Console.WriteLine("Tool box yes or no");
+                        Console.Write("Tool box yes or no ");
                         toolboxSelected = ToBool(Console.ReadLine());
-                        Console.WriteLine("Computer Connection yes or no");
+                        Console.Write("Computer Connection yes or no ");
                         computerConnectionSelected = ToBool(Console.ReadLine());
-                        Console.WriteLine("Arm yes or no");
+                        Console.Write("Arm yes or no ");
                         armSelected = ToBool(Console.ReadLine());
-                        Console.WriteLine("FireExtingquisher yes or no");
+                        Console.Write("FireExtingquisher yes or no ");
                         fireExtingSelected = ToBool(Console.ReadLine());
-                        Console.Write("Number of Chips");
+                        Console.Write("Number of Chips ");
                         numOfChips = Int32.Parse(Console.ReadLine());
-                        newDroid.addAstromechDroid(materialSelected, modelSelected, colorSelected, toolboxSelected, computerConnectionSelected, armSelected, fireExtingSelected, numOfChips);
-                        newDroid.saveDroidList();
+                        newDroid.addAstromechDroid(materialSelected, modelSelected, colorSelected, toolboxSelected, computerConnectionSelected, armSelected, fireExtingSelected, numOfChips); // adds user input
+                        newDroid.saveDroidList(); // saves user input
+                        Astromech astromechCost = new Astromech(materialSelected, modelSelected, colorSelected, toolboxSelected, computerConnectionSelected, armSelected, fireExtingSelected, numOfChips); //creates new astromech object so we can you the methods eith n that class
+                        astromechCost.CalculateBaseCost(); // Calculate methods from astromech
+                        astromechCost.CalculateTotalCost();
+                    }
+                    else
+                    {
+                        Console.WriteLine(userInput +" Is Not an Option");
+                        Console.WriteLine("------------");
                     }
 
 
 
                 }
+                    //Print save file
+                else if (userInput == "p")
+                {
+                    newDroid.PrintSDroidList();
+                }
             }
         }
-
+        //Help from http://stackoverflow.com/questions/3716845/casting-y-or-n-to-bool-c-sharp
         private static bool ToBool(string UserInput)
         {
            if(UserInput.Equals("y", StringComparison.OrdinalIgnoreCase))

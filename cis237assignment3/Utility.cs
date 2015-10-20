@@ -31,7 +31,7 @@ namespace cis237assignment3
             set { arm = value; }
         }
 
-        //
+        //6 paramentor constructor
         public Utility(string Material, string Model, string Color, bool ToolBox, bool ComputerConnection, bool Arm) : base (Material , Model,Color)
         {
             this.toolbox = ToolBox;
@@ -39,12 +39,12 @@ namespace cis237assignment3
             this.arm = Arm;
             this.BaseCost = 4000;
         }
-
+        //overides string megthod in droid
         public override string ToString()
         {
             return base.ToString() + " " + this.toolbox + " " + this.computerConnection + " " + this.arm;
         }
-
+        //Over rides calculate
         public override double CalculateBaseCost()
         {
             return this.BaseCost;

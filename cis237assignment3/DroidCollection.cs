@@ -9,49 +9,58 @@ namespace cis237assignment3
 {
     class DroidCollection
     {
-        List<Droid> droidlist = new List<Droid>();
+        // From Previous assignment
+        List<Droid> collectedDroids = new List<Droid>();
 
-        public string GetDroidList()
+        public string GetCollectedDroid()
         {   
             string droidListString = "";
 
-            foreach (var droid in droidlist)
+            foreach (var newDroid in collectedDroids)
             {
-                droidListString += droid.ToString() + Environment.NewLine;
+                droidListString += newDroid.ToString() + Environment.NewLine;
             }
 
             return droidListString;
         }
-
+        //add Methods for each droid
         public void addUtilityDroid(string Material, string Model, string Color, bool ToolBox, bool ComputerConnection, bool Arm)
         {
             Utility newDroid = new Utility(Material,Model,Color,ToolBox,ComputerConnection,Arm);
-            droidlist.Add(newDroid);
+            collectedDroids.Add(newDroid);
         }
 
         public void addJanitorDroid(string Material, string Model, string Color, bool ToolBox, bool ComputerConnection, bool Arm, bool TrashCompactor, bool Vacuum)
         {
             Janitor newDroid = new Janitor(Material, Model, Color, ToolBox, ComputerConnection, Arm, TrashCompactor, Vacuum);
-            droidlist.Add(newDroid);
+            collectedDroids.Add(newDroid);
         }
         public void addAstromechDroid(string Material, string Model, string Color, bool ToolBox, bool ComputerConnection, bool Arm, bool FireExtingquisher, int NumberShip)
         {
             Astromech newDroid = new Astromech(Material, Model, Color, ToolBox, ComputerConnection, Arm, FireExtingquisher, NumberShip);
-            droidlist.Add(newDroid);
+            collectedDroids.Add(newDroid);
         }
 
         public void addProtocolDroid(string Material, string Model, string Color, int NumberOfLanguages)
         {
             Protocol newDroid = new Protocol(Material, Model, Color, NumberOfLanguages);
-            droidlist.Add(newDroid);
+            collectedDroids.Add(newDroid);
         }
-
+        //Save And Print Method Below
         public void saveDroidList()
         {
             TextWriter WT = new StreamWriter("Droid.txt");
             WT.WriteLine("Material      Model        Color");
-            WT.WriteLine(GetDroidList());
+            WT.WriteLine(GetCollectedDroid());
             WT.Close();
         }
+
+        public void PrintSDroidList()
+        {
+            TextReader RT = new StreamReader("Droid.txt");
+            Console.WriteLine(RT.ReadLine());
+            RT.Close();
+        }
+
     }
 }
